@@ -15,12 +15,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 	}
 
 	t, _ := template.ParseFiles("index.html")
-	fn := struct {
-		Fn []string
-	} {
-		fileNames,
-	}
-	t.Execute(w, fn)
+	t.Execute(w, fileNames)
 
 	log.Println(r.Method, r.URL.String(), r.Proto)
 }
