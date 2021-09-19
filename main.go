@@ -1,17 +1,22 @@
 package main
 
 import (
-	// "log"
+	"log"
 	"fmt"
 	"net/http"
+	"html/template"
 )
 
 func index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "index")
+	t, _ := template.ParseFiles("index.html")
+	var i interface{}
+	t.Execute(w, i)
+	log.Println(r.Method, r.URL.String(), r.Proto)
 }
 
 func upload(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "upload")
+	log.Println(r.Method, r.URL.String(), r.Proto)
 }
 
 func main() {
