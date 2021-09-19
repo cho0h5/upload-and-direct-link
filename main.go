@@ -8,6 +8,11 @@ import (
 )
 
 func index(w http.ResponseWriter, r *http.Request) {
+	files, _ := ioutil.ReadDir(".")
+	for _, file := range files {
+		log.Println(file.Name())
+	}
+
 	t, _ := template.ParseFiles("index.html")
 	var i interface{}
 	t.Execute(w, i)
