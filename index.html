@@ -12,5 +12,10 @@
 			<input type="file" name="fileName" />
 			<input type="submit" value="upload" />
 		</form>
+		<ul>
+			{{range .Fn}}
+			<li><a href="/files/{{.}}">{{.}}</a></li>
+			{{end}}
+		</ul>
 	</body>
 </html>

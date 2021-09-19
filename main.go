@@ -9,13 +9,18 @@ import (
 
 func index(w http.ResponseWriter, r *http.Request) {
 	files, _ := ioutil.ReadDir(".")
+	var fileNames []string
 	for _, file := range files {
-		log.Println(file.Name())
+		fileNames = append(fileNames, file.Name())
 	}
 
 	t, _ := template.ParseFiles("index.html")
-	var i interface{}
-	t.Execute(w, i)
+	fn := struct {
+		Fn []string
+	} {
+		fileNames,
+	}
+	t.Execute(w, fn)
 
 	log.Println(r.Method, r.URL.String(), r.Proto)
 }
