@@ -31,6 +31,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	http.Handle("/files/", http.StripPrefix("/files/", http.FileServer(http.Dir("."))))
 	http.HandleFunc("/", index)
 	http.HandleFunc("/upload", upload)
 	http.ListenAndServe(":8082", nil)
