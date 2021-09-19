@@ -1,3 +1,6 @@
+package main
+
+var indexPage string = `
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -18,4 +21,4 @@
 			{{end}}
 		</ul>
 	</body>
-</html>
+</html>`

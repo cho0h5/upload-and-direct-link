@@ -13,8 +13,9 @@ func index(w http.ResponseWriter, r *http.Request) {
 	for _, file := range files {
 		fileNames = append(fileNames, file.Name())
 	}
-
-	t, _ := template.ParseFiles("index.html")
+	
+	t := template.New("index")
+	t, _ = t.Parse(indexPage)
 	t.Execute(w, fileNames)
 
 	log.Println(r.Method, r.URL.String(), r.Proto)
