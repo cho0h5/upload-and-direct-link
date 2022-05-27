@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>UADL</title>
+	</head>
+
+	<body ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+		<h1>Upload And Direct-Link</h1>
+		<!--<form enctype="multipart/form-data" action="/upload" method="post">
+			<input type="file" name="fileName" />
+			<input type="submit" value="upload" />
+		</form>-->
+		<ul>
+			{{range .}}
+			<li><a href="/files/{{.}}" download>{{.}}</a></li>
+			{{end}}
+		</ul>
+	</body>
+	<script>
+		function dropHandler(event) {
+			console.log(event.dataTransfer);
+			console.log(event.dataTransfer.files[0]);
+			event.preventDefault();
+
+			const formData = new FormData();
+			formData.append('fileName', event.dataTransfer.files[0]);
+
+			fetch('/upload', {
+				method: 'POST',
+				body: formData
+			})
+		}
+		function dragOverHandler(event) {
+			event.preventDefault();
+		}
+	</script>
+</html>

@@ -6,7 +6,12 @@ import (
 	"net/http"
 	"io/ioutil"
 	"html/template"
+
+	_ "embed"
 )
+
+//go:embed index.html
+var indexPage string
 
 func index(w http.ResponseWriter, r *http.Request) {
 	files, _ := ioutil.ReadDir(".")
