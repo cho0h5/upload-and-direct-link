@@ -22,5 +22,10 @@ func upload(w http.ResponseWriter, r *http.Request) {
 }
 
 func remove(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("unimplemented"))
+	fileName := r.URL.Path[8:]
+	os.Remove(fileName)
+
+	http.Redirect(w, r, "/", http.StatusSeeOther)
+
+	log.Println("Remove File:", fileName)
 }
