@@ -14,7 +14,7 @@
 		</form>
 		<ul>
 			{{range .}}
-			<li><a href="/files/{{.}}" download>{{.}}</a></li>
+			<li><a href="/files/{{.}}" download>{{.}}</a><a href="/remove/{{.}}"><button>remove</button></a></li>
 			{{end}}
 		</ul>
 	</body>
