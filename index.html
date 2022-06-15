@@ -20,8 +20,6 @@
 	</body>
 	<script>
 		function dropHandler(event) {
-			console.log(event.dataTransfer);
-			console.log(event.dataTransfer.files[0]);
 			event.preventDefault();
 
 			const formData = new FormData();
@@ -30,7 +28,7 @@
 			fetch('/upload', {
 				method: 'POST',
 				body: formData
-			})
+			}).then(() => window.location.replace("/"));
 		}
 		function dragOverHandler(event) {
 			event.preventDefault();
