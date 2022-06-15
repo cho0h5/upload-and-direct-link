@@ -13,6 +13,7 @@ func main() {
 	http.Handle("/files/", http.StripPrefix("/files/", http.FileServer(http.Dir("."))))
 	http.HandleFunc("/", index)
 	http.HandleFunc("/upload", upload)
+	http.HandleFunc("/remove", remove)
 
 	log.Println("Start: http://localhost:" + *port)
 	log.Fatal(http.ListenAndServe(":" + *port, nil))

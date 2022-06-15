@@ -20,3 +20,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 	log.Println("Uploaded File:", fileHeader.Filename)
 	log.Println("File Size:", fileHeader.Size)
 }
+
+func remove(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("unimplemented"))
+}
