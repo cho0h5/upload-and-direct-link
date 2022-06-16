@@ -8,16 +8,34 @@
 	</head>
 
 	<body ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
-		<h1>Upload And Direct-Link</h1>
-		<form enctype="multipart/form-data" action="/upload" method="post">
-			<input type="file" name="fileName" />
-			<input type="submit" value="upload" />
-		</form>
-		<ul>
-			{{range .}}
-			<li><a href="/files/{{.}}" download>{{.}}</a><a href="/remove/{{.}}"><button>remove</button></a></li>
-			{{end}}
-		</ul>
+		<section class="section">
+			<form enctype="multipart/form-data" action="/upload" method="post" class="box">
+				<div class="file">
+					<label class="file-label">
+					  	<input class="file-input" type="file" name="fileName">
+					  	<span class="file-cta">
+							<span class="file-label">
+								Choose a file…
+							</span>
+					  	</span>
+					</label>
+				</div>
+				<input type="submit" value="upload" class="button" />
+			</form>
+		</section>
+		<section class="section">
+			<div class="columns">
+				{{range .}}
+				<div class="column">
+					<div class="card">
+						<div class="card-content">
+							<a href="/files/{{.}}" download>{{.}}</a><a href="/remove/{{.}}"><button>remove</button></a>
+						</div>
+					</div>
+				</div>
+				{{end}}
+			</div>
+		</section>
 	</body>
 	<script>
 		function dropHandler(event) {
