@@ -16,7 +16,8 @@
 			{{range .}}
 			<li>
 				<a href="/files/{{.}}" download>{{.}}</a>
-				<a href="/remove/{{.}}"><button>remove</button></a>
+				<button onclick="copy('{{.}}');">Copy</button>
+				<a href="/remove/{{.}}"><button>Remove</button></a>
 			</li>
 			{{end}}
 		</ul>
@@ -33,8 +34,15 @@
 				body: formData
 			}).then(() => window.location.replace("/"));
 		}
+
 		function dragOverHandler(event) {
 			event.preventDefault();
+		}
+
+		function copy(filename) {
+			let direct_link = window.location.host + '/files/' + filename
+
+			navigator.clipboard.writeText(direct_link);
 		}
 	</script>
 </html>
